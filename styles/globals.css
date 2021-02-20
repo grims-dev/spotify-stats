@@ -23,6 +23,12 @@
   font-display: swap;
 }
 
+html { 
+  height: 100%;
+  background: linear-gradient(170deg, #222 calc(70% - 1px), #444 30%);
+  color: #eee;
+}
+
 html,
 body {
   padding: 0;
