@@ -10,6 +10,8 @@ export default function Home() {
         <title>Spotify Stats</title>
         <meta name="description" content="View your Spotify listening habits in charts and graphs"></meta>
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+        <link rel="preload" href="/fonts/Oxygen/Oxygen-Light.ttf" as="font" crossOrigin="" />
+        <link rel="preload" href="/fonts/Oxygen/Oxygen-Bold.ttf" as="font" crossOrigin="" />
       </Head>
       <h1>Spotify Stats</h1>
     </div>
