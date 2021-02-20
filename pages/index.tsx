@@ -9,6 +9,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>Spotify Stats</title>
         <meta name="description" content="View your Spotify listening habits in charts and graphs"></meta>
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
       </Head>
       <h1>Spotify Stats</h1>
     </div>
