@@ -21,7 +21,7 @@ export default function Home() {
       </Head>
       <div className="md:flex">
         <div className="p-4 md:w-3/5 md:mt-52">
-          <h1 className="text-9xl text-green-600">Spotify Stats</h1>
+          <h1 className="text-9xl text-green-500">Spotify Stats</h1>
         </div>
         <div className="p-4 md:w-2/5 md:mt-60 text-2xl leading-normal">
           {isLoggedIn ? (
@@ -29,7 +29,7 @@ export default function Home() {
           ) : (
             <p className="mb-6">Log in with Spotify to view your listening habits in charts and graphs.</p>
           )}
-          <button className="px-4 py-2 bg-green-600 rounded shadow-md text-xl">{isLoggedIn ? "Log out" : "Log in"}</button>
+          <button className="px-4 py-2 bg-green-500 rounded shadow-md text-xl">{isLoggedIn ? "Log out" : "Log in"}</button>
         </div>
       </div>
     </div>
