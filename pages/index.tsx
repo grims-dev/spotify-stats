@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from 'next/link'
+import { redirectToAuth } from '../lib/userAuth';
 import styles from "../styles/Home.module.css";
 
 let isLoggedIn = true;
@@ -29,7 +30,7 @@ export default function Home() {
           ) : (
             <p className="mb-6">Log in with Spotify to view your listening habits in charts and graphs.</p>
           )}
-          <button className="px-4 py-2 bg-green-500 rounded shadow-md text-xl">{isLoggedIn ? "Log out" : "Log in"}</button>
+          <button className="px-4 py-2 bg-green-500 rounded shadow-md text-xl" onClick={redirectToAuth}>{isLoggedIn ? "Log out" : "Log in"}</button>
         </div>
       </div>
     </div>
