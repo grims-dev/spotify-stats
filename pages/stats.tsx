@@ -1,8 +1,9 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
+import { createGetRequestOptions } from '../lib/api-methods';
 
-
-export default function Stats() {
+export default function Stats({ test }) {
+  console.log("hi!", test);
   return (
     <div className={styles.container}>
       <Head>
@@ -15,8 +16,16 @@ export default function Stats() {
         <link rel="preload" href="/fonts/Oxygen/Oxygen-Bold.ttf" as="font" crossOrigin="" />
       </Head>
       <div>
-        <p>Stats!</p>
+        <p>Stats page!</p>
       </div>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const getRequestOptions = createGetRequestOptions(process.env.SPOTIFY_CLIENT_SECRET);
+
+  return {
+    props: { test: getRequestOptions },
+  }
 }
