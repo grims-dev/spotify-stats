@@ -1,4 +1,4 @@
-export function redirectToAuth() {
+export function redirectToUserAuth() {
   const scopes = 'user-read-recently-played user-top-read playlist-read-private playlist-read-collaborative';
   let authUrl = 'https://accounts.spotify.com/authorize';
   authUrl += '?response_type=code';

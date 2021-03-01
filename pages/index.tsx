@@ -1,14 +1,13 @@
 import Head from "next/head";
-import Link from 'next/link'
-import { redirectToAuth } from '../lib/userAuth';
+import Link from "next/link";
+import { useRouter } from 'next/router'
+import { redirectToUserAuth } from '../lib/api-auth';
 import styles from "../styles/Home.module.css";
 
-let isLoggedIn = true;
-const user = {
-  username: "ciaran_grimshaw"
-}
-
 export default function Home() {
+  const router = useRouter();
+  const spotifyToken = router.query?.code;
+
   return (
     <div className={styles.container}>
       <Head>
@@ -25,12 +24,12 @@ export default function Home() {
           <h1 className="text-7xl md:text-9xl text-green-600 text-center md:text-left">Spotify Stats</h1>
         </div>
         <div className="p-4 md:w-2/5 md:mt-60 text-xl md:text-2xl leading-normal text-center md:text-left">
-          {isLoggedIn ? (
-            <p className="mb-6">You are logged in as <strong>{user.username}</strong>! View the <Link href="/stats">stats page</Link></p>
+          {spotifyToken ? (
+            <p className="mb-6">You are logged in with Spotify! View the <Link href="/stats">stats page</Link> &raquo;</p>
           ) : (
             <p className="mb-6">Log in with Spotify to view your listening habits in charts and graphs.</p>
           )}
-          <button className="px-4 py-2 bg-green-600 rounded shadow-md text-xl" onClick={redirectToAuth}>{isLoggedIn ? "Log out" : "Log in"}</button>
+          <button className="px-4 py-2 bg-green-600 rounded shadow-md text-xl" onClick={redirectToUserAuth}>{spotifyToken ? "Log out" : "Log in"}</button>
         </div>
       </div>
     </div>
