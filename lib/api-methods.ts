@@ -18,8 +18,14 @@ export async function getUserOwnedFollowedPlaylists(getRequestOptions: object) {
     .then((json) => console.log(json));
 }
 
-export async function getUsersTopArtists(getRequestOptions: object) {
-  fetch("https://api.spotify.com/v1/me/top/" + "?type=" /*`artists` or `tracks` here*/ + "&time_range=" /* short_term/medium_term/long_term */, getRequestOptions)
+type TopType = 'artists' | 'tracks';
+type TimeRange = 'short_term' | 'medium_term' | 'long_term';
+export async function getUsersTopArtistsOrTracks(getRequestOptions: object, topType: TopType, timeRange: TimeRange) {
+  let endpoint = 'https://api.spotify.com/v1/me/top/';
+  endpoint += '?type=' + topType;
+  endpoint += '&time_range=' + timeRange;
+
+  fetch(endpoint, getRequestOptions)
     .then((response) => response.json())
     .catch((error) => console.error(error))
     .then((json) => console.log(json));
