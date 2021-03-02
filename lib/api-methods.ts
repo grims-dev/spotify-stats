@@ -1,14 +1,3 @@
-export function createGetRequestOptions(accessToken: string) {
-  const headers = new Headers();
-  headers.append('Authorization', 'Bearer ' + accessToken);
-  return {
-    method: "GET",
-    headers: {
-      'Authorization': 'Bearer ' + accessToken
-    },
-  }
-}
-
 // Get a list of the playlists owned or followed by the current Spotify user.
 // HEADER	- Authorization Token
 export async function getUserOwnedFollowedPlaylists(getRequestOptions: object) {

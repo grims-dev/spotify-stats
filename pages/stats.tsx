@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { createGetRequestOptions } from '../lib/api-methods';
+import { createGetRequestOptions } from '../lib/fetch-helpers';
 
 export default function Stats({ test }) {
   console.log("hi!", test);
