@@ -1,8 +1,8 @@
-import Head from "next/head";
-import Link from "next/link";
+import Head from 'next/head';
+import Link from 'next/link';
 import { useRouter } from 'next/router'
 import { redirectToUserAuth } from '../lib/api-auth';
-import styles from "../styles/Home.module.css";
+import styles from '../styles/Home.module.css';
 
 export default function Home() {
   const router = useRouter();

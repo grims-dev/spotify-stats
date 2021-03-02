@@ -12,7 +12,7 @@ export function createGetRequestOptions(accessToken: string) {
 // Get a list of the playlists owned or followed by the current Spotify user.
 // HEADER	- Authorization Token
 export async function getUserOwnedFollowedPlaylists(getRequestOptions: object) {
-  fetch("https://api.spotify.com/v1/me/playlists", getRequestOptions)
+  fetch('https://api.spotify.com/v1/me/playlists', getRequestOptions)
     .then((response) => response.json())
     .catch((error) => console.error(error))
     .then((json) => console.log(json));
@@ -35,7 +35,7 @@ export async function getUsersTopArtistsOrTracks(getRequestOptions: object, topT
 // HEADER	- Authorization Token
 // QUERY PARAMETER	- ids - A comma-separated list of the Spotify IDs for the tracks. Maximum: 100 IDs - String, Required
 export async function getTracksAudioFeatures(getRequestOptions: object) {
-  fetch("https://api.spotify.com/v1/audio-features", getRequestOptions)
+  fetch('https://api.spotify.com/v1/audio-features', getRequestOptions)
     .then((response) => response.json())
     .catch((error) => console.error(error))
     .then((json) => console.log(json));
