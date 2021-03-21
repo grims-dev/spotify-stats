@@ -21,7 +21,11 @@ export async function getServerSideProps({ req, res, query }) {
   cookies.set('code', code);
 
   const accessResponse = await requestAccessToken(code);
-  if (accessResponse.error) return homeRedirect;
+  if (accessResponse.error) {
+    cookies.set('code');
+    cookies.set('accessResponse');
+    return homeRedirect;
+  }
   // append absolute timestamp to object
   accessResponse.expires_in_unix_timestamp = new Date().getTime() + (accessResponse.expires_in * 1000);
   cookies.set('accessResponse', JSON.stringify(accessResponse));
