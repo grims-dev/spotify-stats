@@ -26,6 +26,7 @@
 html { 
   height: 100%;
   background: linear-gradient(170deg, #222 calc(70% - 1px), #444 30%);
+  background-attachment: fixed;
   color: #eee;
 }
 
