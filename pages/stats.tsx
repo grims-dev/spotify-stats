@@ -1,10 +1,9 @@
 import Head from 'next/head';
 import Cookies from 'cookies';
 import styles from '../styles/Home.module.css';
-import { createGetRequestOptions } from '../lib/fetch-helpers';
 import { getUserOwnedFollowedPlaylists } from '../lib/api-methods';
 
-export default function Stats({ isAuthed = false }) {
+export default function Stats({ isAuthed = false, data }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -18,6 +17,9 @@ export default function Stats({ isAuthed = false }) {
       </Head>
       <div>
         <p>Stats page! You are {isAuthed ? 'authed' : 'not authed'}.</p>
+        <code>
+          {data}
+        </code>
       </div>
     </div>
   );
@@ -40,9 +42,6 @@ export async function getServerSideProps({ req, res }) {
     }
   }
 
-  const requestOptions = createGetRequestOptions(existingAccessResponse.access_token);
-  console.log(await getUserOwnedFollowedPlaylists(requestOptions));
-  return {
-    props: { isAuthed: true },
-  }
+  const playlistData = await getUserOwnedFollowedPlaylists(existingAccessResponse.access_token);
+  return { props: { isAuthed: true, data: JSON.stringify(playlistData) } }
 }
