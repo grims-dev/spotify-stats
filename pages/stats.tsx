@@ -19,7 +19,7 @@ export default function Stats({ isAuthed = false, data }) {
           </tr>
           {parsedItems.map((item, i) => {
             return (
-              <tr>
+              <tr key={`row-${i}`}>
                 <td>{i + 1}.</td>
                 <td>{item.name}</td>
                 <td>{item.artists.map(artist => artist.name).join(', ')}</td>
