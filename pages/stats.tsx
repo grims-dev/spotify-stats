@@ -1,6 +1,7 @@
 import Cookies from 'cookies';
 import HeadTags from '../components/headTags';
 import styles from '../styles/Home.module.css';
+import { signCookieKeys, getOptions } from '../lib/cookies';
 import { redirectToUserAuth } from '../lib/api-auth';
 import { getUserOwnedFollowedPlaylists, getUsersTopArtistsOrTracks } from '../lib/api-methods';
 
@@ -55,8 +56,8 @@ export default function Stats({ isAuthed = false, data }) {
 }
 
 export async function getServerSideProps({ req, res }) {
-  const cookies = new Cookies(req, res);
-  const existingAccessResponse = cookies.get('accessResponse') ? JSON.parse(cookies.get('accessResponse')) : false;
+  const cookies = new Cookies(req, res, signCookieKeys);
+  const existingAccessResponse = JSON.parse(cookies.get('accessResponse', getOptions) || false);
   if (!existingAccessResponse) {
     return { props: { isAuthed: false } }
   }

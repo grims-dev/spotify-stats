@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Cookies from 'cookies';
 import { redirectToUserAuth } from '../lib/api-auth';
 import HeadTags from '../components/headTags';
+import { signCookieKeys, getOptions } from '../lib/cookies';
 import styles from '../styles/Home.module.css';
 
 export default function Home({ isAuthed = false }) {
@@ -28,8 +29,8 @@ export default function Home({ isAuthed = false }) {
 }
 
 export async function getServerSideProps({ req, res }) {
-  const cookies = new Cookies(req, res);
-  const existingAccessResponse = cookies.get('accessResponse') ? JSON.parse(cookies.get('accessResponse')) : false;
+  const cookies = new Cookies(req, res, signCookieKeys);
+  const existingAccessResponse = JSON.parse(cookies.get('accessResponse', getOptions) || false);
   if (!existingAccessResponse) {
     return { props: { isAuthed: false } }
   }
