@@ -1,5 +1,5 @@
 import Cookies from 'cookies';
-import HeadTags from '../components/headTags';
+import HeadTags from '../components/HeadTags';
 import styles from '../styles/Home.module.css';
 import { signCookieKeys, getOptions } from '../lib/cookies';
 import { redirectToUserAuth } from '../lib/api-auth';

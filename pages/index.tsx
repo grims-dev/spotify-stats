@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Cookies from 'cookies';
 import { redirectToUserAuth } from '../lib/api-auth';
-import HeadTags from '../components/headTags';
+import HeadTags from '../components/HeadTags';
 import { signCookieKeys, getOptions } from '../lib/cookies';
 import styles from '../styles/Home.module.css';
 
