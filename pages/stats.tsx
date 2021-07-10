@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Cookies from 'cookies';
 import HeadTags from '../components/HeadTags';
-import TopTracksTable from '../components/TopTracksTable';
+import TopArtistsOrTracksTable from '../components/TopArtistsOrTracksTable';
 import styles from '../styles/Home.module.css';
 import { signCookieKeys, getOptions } from '../lib/cookies';
 import { redirectToUserAuth } from '../lib/api-auth';
@@ -20,14 +20,25 @@ export default function Stats({ accessResponse = '' }) {
     );
   }
 
+  const [topType, setTopType] = useState('tracks');
+  const [timeRange, setTimeRange] = useState('short_term');
   const access = JSON.parse(accessResponse);
 
   return (
     <div className={styles.container}>
       <HeadTags title="Stats" />
       <div className="p-4 md:mt-12 text-xl md:text-2xl leading-normal">
-        <p>Your top tracks from the last 4 weeks:</p>
-        <TopTracksTable accessToken={access.access_token} />
+      <select name="top-type" onChange={e => setTopType(e.target.value)}>
+        <option value="tracks">Tracks</option>
+        <option value="artists">Artists</option>
+      </select>
+      <select name="time-range" onChange={e => setTimeRange(e.target.value)}>
+      <option value="short_term">Last 4 weeks</option>
+        <option value="medium_term">Last 6 months</option>
+        <option value="long_term">All time</option>
+      </select>
+        <p>Your top {topType} from {timeRange}:</p>
+        <TopArtistsOrTracksTable accessToken={access.access_token} endpointOptions={{topType, timeRange}} />
       </div>
     </div>
   );
