@@ -8,7 +8,8 @@ export default function TopArtistsOrTracksTable({ accessToken , endpointOptions 
   if (data?.items) return (
     <table className="w-full text-base">
       <tbody>
-        {endpointOptions.topType === 'tracks' && (
+        {// top tracks
+        endpointOptions.topType === 'tracks' && (
           <>
             <tr className="border-b border-gray-500 text-left sticky top-0">
               <th className="p-1.5">No.</th>
@@ -33,7 +34,9 @@ export default function TopArtistsOrTracksTable({ accessToken , endpointOptions 
             })}
           </>
         )}
-        {endpointOptions.topType === 'artists' && (
+
+        {// top artists
+        endpointOptions.topType === 'artists' && (
           <>
             <tr className="border-b border-gray-500 text-left sticky top-0">
               <th className="p-1.5">No.</th>
@@ -62,5 +65,5 @@ export default function TopArtistsOrTracksTable({ accessToken , endpointOptions 
     </table>
   )
 
-  return <>An error has occurred. Please try reloading the page.</>;
+  return <>Your authentication has expired. Please try reloading the page.</>;
 }
