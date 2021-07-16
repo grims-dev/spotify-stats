@@ -15,7 +15,7 @@ export default function Home({ isAuthed = false }) {
         </div>
         <div className="p-4 md:w-2/5 md:mt-60 text-xl md:text-2xl leading-normal text-center md:text-left">
           {isAuthed ? (
-            <p className="mb-6">You are logged in with Spotify! View the <Link href="/stats">stats page</Link> &raquo;</p>
+            <p className="mb-6">You are logged in with Spotify!<br/>View your <Link href="/top">top tracks & artists &raquo;</Link></p>
           ) : (
             <>
               <p className="mb-6">Log in with Spotify to view your listening habits in charts and graphs.</p>
