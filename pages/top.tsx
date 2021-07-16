@@ -7,13 +7,13 @@ import { signCookieKeys, getOptions } from '../lib/cookies';
 import { redirectToUserAuth } from '../lib/api-auth';
 
 
-export default function Stats({ accessResponse = '' }) {
+export default function Top({ accessResponse = '' }) {
   if (!accessResponse) { 
     return (
       <div className={styles.container}>
-        <HeadTags title="Stats" />
+        <HeadTags title="Top Artists and Tracks" />
         <div className="p-4 md:mt-48 text-xl md:text-2xl leading-normal text-center">
-          <p className="mb-6">Sorry, your stats are only available if you log in with Spotify.</p>
+          <p className="mb-6">Sorry, your top artists and tracks are only available if you log in with Spotify.</p>
           <button className="px-4 py-2 bg-green-600 rounded shadow-md text-xl" onClick={redirectToUserAuth}>Log in</button>
         </div>
       </div>
@@ -26,7 +26,7 @@ export default function Stats({ accessResponse = '' }) {
 
   return (
     <div className={styles.container}>
-      <HeadTags title="Stats" />
+      <HeadTags title={`Top ${topType[0].toUpperCase() + topType.substring(1)}`} />
       <div className="p-4 md:mt-6 text-xl md:text-2xl leading-normal">
         <p className="mb-4">
           Your top Spotify
