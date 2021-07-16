@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import React from "react";
 
-export default function HeadTags({ title = '' }) {
+export default function HeadTags({ title = '', customStyle = '' }) {
   const titleText = title ? `${title} | Spotify Stats` : 'Spotify Stats';
   return (
     <Head>
@@ -12,6 +12,7 @@ export default function HeadTags({ title = '' }) {
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
       <link rel="preload" href="/fonts/Oxygen/Oxygen-Light.ttf" as="font" crossOrigin="" />
       <link rel="preload" href="/fonts/Oxygen/Oxygen-Bold.ttf" as="font" crossOrigin="" />
+      <style>{customStyle}</style>
     </Head>
   )
 }
