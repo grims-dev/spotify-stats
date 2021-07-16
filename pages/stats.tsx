@@ -27,17 +27,20 @@ export default function Stats({ accessResponse = '' }) {
   return (
     <div className={styles.container}>
       <HeadTags title="Stats" />
-      <div className="p-4 md:mt-12 text-xl md:text-2xl leading-normal">
-      <select name="top-type" onChange={e => setTopType(e.target.value)}>
-        <option value="tracks">Tracks</option>
-        <option value="artists">Artists</option>
-      </select>
-      <select name="time-range" onChange={e => setTimeRange(e.target.value)}>
-      <option value="short_term">Last 4 weeks</option>
-        <option value="medium_term">Last 6 months</option>
-        <option value="long_term">All time</option>
-      </select>
-        <p>Your top {topType} from {timeRange}:</p>
+      <div className="p-4 md:mt-6 text-xl md:text-2xl leading-normal">
+        <p className="mb-4">
+          Your top Spotify
+          <select name="top-type" className="mx-2 bg-transparent border border-gray-500 rounded cursor-pointer" onChange={e => setTopType(e.target.value)}>
+            <option value="tracks">tracks</option>
+            <option value="artists">artists</option>
+          </select>
+          from
+          <select name="time-range" className="mx-2 bg-transparent border border-gray-500 rounded cursor-pointer" onChange={e => setTimeRange(e.target.value)}>
+            <option value="short_term">the last 4 weeks</option>
+            <option value="medium_term">the last 6 months</option>
+            <option value="long_term">all time</option>
+          </select>:
+        </p>
         <TopArtistsOrTracksTable accessToken={access.access_token} endpointOptions={{topType, timeRange}} />
       </div>
     </div>
