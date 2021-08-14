@@ -10,7 +10,7 @@ type EndpointOptions = {
 export default function useTopArtistsOrTracks(accessToken: string, options: EndpointOptions) {
   const endpoint = `https://api.spotify.com/v1/me/top/${options.topType}`
     + `?time_range=${options.timeRange}`
-    + `&limit=20`;
+    + `&limit=50`;
   const { data, error } = useSWR([endpoint, accessToken], getRequest);
 
   return {
