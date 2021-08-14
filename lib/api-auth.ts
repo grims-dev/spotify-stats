@@ -17,7 +17,7 @@ export async function requestAccessToken(authCodeOrRefreshToken: string) {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Authorization': `Basic ${base64ClientIdAndSecret}`,
     },
-    body: 'grant_type=authorization_code&code=' + authCodeOrRefreshToken + '&redirect_uri=' + process.env.NEXT_PUBLIC_SPOTIFY_REDIRECT_URI
+    body: `grant_type=authorization_code&code=${authCodeOrRefreshToken}&redirect_uri=${process.env.NEXT_PUBLIC_SPOTIFY_REDIRECT_URI}`,
   }
   return fetch('https://accounts.spotify.com/api/token', postRequestOptions)
     .then((response) => response.json())
