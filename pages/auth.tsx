@@ -14,8 +14,11 @@ export async function getServerSideProps({ req, res, query }) {
     }
   }
   const cookies = new Cookies(req, res, signCookieKeys);
-  const existingAccessResponse = JSON.parse(cookies.get('accessResponse', getOptions) || '');
-  if (existingAccessResponse && new Date().getTime() < existingAccessResponse.expires_in_unix_timestamp) return homeRedirect;
+  const existingAccessResponseJSON = cookies.get('accessResponse', getOptions);
+  const existingAccessResponse = existingAccessResponseJSON ? JSON.parse(existingAccessResponseJSON) : null;
+  if (existingAccessResponse && new Date().getTime() < existingAccessResponse.expires_in_unix_timestamp) {
+    return homeRedirect;
+  }
 
   let code = query.code || req.cookies.code;
   if (!code) return homeRedirect;

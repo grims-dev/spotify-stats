@@ -49,7 +49,8 @@ export default function Top({ accessResponse = '' }) {
 
 export async function getServerSideProps({ req, res }) {
   const cookies = new Cookies(req, res, signCookieKeys);
-  const existingAccessResponse = JSON.parse(cookies.get('accessResponse', getOptions) || '');
+  const existingAccessResponseJSON = cookies.get('accessResponse', getOptions);
+  const existingAccessResponse = existingAccessResponseJSON ? JSON.parse(existingAccessResponseJSON) : null;
   if (!existingAccessResponse) {
     return { props: { isAuthed: false } }
   }
@@ -64,5 +65,5 @@ export async function getServerSideProps({ req, res }) {
     }
   }
 
-  return { props: { accessResponse: JSON.stringify(existingAccessResponse) } }
+  return { props: { accessResponse: existingAccessResponseJSON } }
 }
