@@ -30,7 +30,7 @@ export default function Home({ isAuthed = false }) {
 
 export async function getServerSideProps({ req, res }) {
   const cookies = new Cookies(req, res, signCookieKeys);
-  const existingAccessResponse = JSON.parse(cookies.get('accessResponse', getOptions) || false);
+  const existingAccessResponse = JSON.parse(cookies.get('accessResponse', getOptions) || '');
   if (!existingAccessResponse) {
     return { props: { isAuthed: false } }
   }
