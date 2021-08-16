@@ -8,15 +8,15 @@ export default function Auth() {
 
 export async function getServerSideProps({ req, res, query }) {
   const homeRedirect = {
-      redirect: {
+    redirect: {
       permanent: false,
       destination: "/"
     }
   }
   const cookies = new Cookies(req, res, signCookieKeys);
-  const existingAccessResponseJSON = cookies.get('accessResponse', getOptions);
-  const existingAccessResponse = existingAccessResponseJSON ? JSON.parse(existingAccessResponseJSON) : null;
-  if (existingAccessResponse && new Date().getTime() < existingAccessResponse.expires_in_unix_timestamp) {
+  const existingAccessJSON = cookies.get('accessResponse', getOptions);
+  const existingAccess = existingAccessJSON ? JSON.parse(existingAccessJSON) : null;
+  if (existingAccess && new Date().getTime() < existingAccess.expires_in_unix_timestamp) {
     return homeRedirect;
   }
 
@@ -26,8 +26,8 @@ export async function getServerSideProps({ req, res, query }) {
 
   const accessResponse = await requestAccessToken(code);
   if (accessResponse.error) {
-    cookies.set('code', '', setOptions);
-    cookies.set('accessResponse', '', setOptions);
+    cookies.set('code');
+    cookies.set('accessResponse');
     return homeRedirect;
   }
   // append absolute timestamp to object
