@@ -1,10 +1,8 @@
 import { useState } from 'react';
-import Cookies from 'cookies';
 import HeadTags from '../components/HeadTags';
 import TopArtistsOrTracksList from '../components/TopArtistsOrTracksList';
 import styles from '../styles/Home.module.css';
-import { signCookieKeys, getOptions } from '../lib/cookies';
-import { redirectToUserAuth } from '../lib/api-auth';
+import { redirectToUserAuth, serverSideAuthCheck } from '../lib/api-auth';
 
 
 export default function Top({ accessResponse = '' }) {
@@ -48,22 +46,5 @@ export default function Top({ accessResponse = '' }) {
 }
 
 export async function getServerSideProps({ req, res }) {
-  const cookies = new Cookies(req, res, signCookieKeys);
-  const existingAccessResponseJSON = cookies.get('accessResponse', getOptions);
-  const existingAccessResponse = existingAccessResponseJSON ? JSON.parse(existingAccessResponseJSON) : null;
-  if (!existingAccessResponse) {
-    return { props: { isAuthed: false } }
-  }
-
-  // redirect to auth page with refresh token if access has expired
-  if (new Date().getTime() >= existingAccessResponse.expires_in_unix_timestamp) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: `/auth?code=${existingAccessResponse.refresh_token}`
-      }
-    }
-  }
-
-  return { props: { accessResponse: existingAccessResponseJSON } }
+  return serverSideAuthCheck(req, res);
 }

@@ -1,3 +1,6 @@
+import Cookies from 'cookies';
+import { signCookieKeys, getOptions } from '../lib/cookies';
+
 export function redirectToUserAuth() {
   const scopes: string = 'user-read-recently-played user-top-read playlist-read-private playlist-read-collaborative';
   let authUrl: string = `https://accounts.spotify.com/authorize`
@@ -23,4 +26,27 @@ export async function requestAccessToken(authCodeOrRefreshToken: string) {
     .then((response) => response.json())
     .catch((error) => console.error(error))
     .then((json) => { return json });
+}
+
+export function serverSideAuthCheck(req, res) {
+  const cookies = new Cookies(req, res, signCookieKeys);
+  const existingAccessJSON = cookies.get('accessResponse', getOptions);
+  console.log('existingAccessJSON :', existingAccessJSON);
+  
+  if (!existingAccessJSON) {
+    return { props: { accessResponse: '' } }
+  }
+
+  // redirect to auth page with refresh token if access has expired
+  const existingAccess = existingAccessJSON ? JSON.parse(existingAccessJSON) : null;
+  if (new Date().getTime() >= existingAccess.expires_in_unix_timestamp) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: `/auth?code=${existingAccess.refresh_token}`
+      }
+    }
+  }
+
+  return { props: { accessResponse: existingAccessJSON } }
 }
