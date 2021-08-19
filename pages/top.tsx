@@ -1,3 +1,4 @@
+import { GetServerSideProps } from 'next';
 import { useState } from 'react';
 import HeadTags from '../components/HeadTags';
 import TopArtistsOrTracksList from '../components/TopArtistsOrTracksList';
@@ -45,6 +46,6 @@ export default function Top({ accessResponse = '' }) {
   );
 }
 
-export async function getServerSideProps({ req, res }) {
-  return serverSideAuthCheck(req, res);
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  return serverSideAuthCheck(context);
 }

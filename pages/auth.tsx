@@ -34,5 +34,10 @@ export async function getServerSideProps({ req, res, query }) {
   accessResponse.expires_in_unix_timestamp = new Date().getTime() + (accessResponse.expires_in * 1000);
   cookies.set('accessResponse', JSON.stringify(accessResponse), setOptions);
 
-  return homeRedirect;
+  return {
+    redirect: {
+      permanent: false,
+      destination: "/?authed=true"
+    }
+  };
 }

@@ -28,11 +28,10 @@ export async function requestAccessToken(authCodeOrRefreshToken: string) {
     .then((json) => { return json });
 }
 
-export function serverSideAuthCheck(req, res) {
+export function serverSideAuthCheck({ req, res }) {
   const cookies = new Cookies(req, res, signCookieKeys);
   const existingAccessJSON = cookies.get('accessResponse', getOptions);
-  console.log('existingAccessJSON :', existingAccessJSON);
-  
+
   if (!existingAccessJSON) {
     return { props: { accessResponse: '' } }
   }
