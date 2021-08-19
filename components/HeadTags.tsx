@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import React from "react";
 
 export default function HeadTags({ title = '', customStyle = '' }) {
   const titleText = title ? `${title} | Spotify Stats` : 'Spotify Stats';
