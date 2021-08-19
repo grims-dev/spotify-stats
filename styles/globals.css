@@ -24,18 +24,22 @@
 }
 
 html { 
-  height: 100%;
   background: #222;
   background-attachment: fixed;
   color: #eee;
 }
 
-html,
 body {
-  padding: 0;
-  margin: 0;
   font-family: OxygenLight, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-weight: 100;
+}
+
+html,
+body,
+#__next {
+  height: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6, strong {
