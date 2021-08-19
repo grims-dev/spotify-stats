@@ -1,20 +1,13 @@
 import { GetServerSideProps } from 'next';
 import { useState } from 'react';
 import HeadTags from '../components/HeadTags';
+import NotAuthedMessage from '../components/NotAuthedMessage';
 import TopArtistsOrTracksList from '../components/TopArtistsOrTracksList';
-import { redirectToUserAuth, serverSideAuthCheck } from '../lib/api-auth';
+import { serverSideAuthCheck } from '../lib/api-auth';
 
 export default function Top({ accessResponse = '' }) {
   if (!accessResponse) { 
-    return (
-      <>
-        <HeadTags title="Top Artists and Tracks" />
-        <div className="p-4 md:mt-48 text-xl md:text-2xl leading-normal text-center">
-          <p className="mb-6">Sorry, your top artists and tracks are only available if you log in with Spotify.</p>
-          <button className="px-4 py-2 bg-green-600 rounded shadow-md text-xl" onClick={redirectToUserAuth}>Log in</button>
-        </div>
-      </>
-    );
+    return <NotAuthedMessage pageTitle="Top Artists and Tracks" message="Sorry, your top artists and tracks are only available if you log in with Spotify." />;
   }
 
   const [topType, setTopType] = useState<string>('tracks');
