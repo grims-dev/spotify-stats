@@ -3,14 +3,13 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { redirectToUserAuth, serverSideAuthCheck } from '../lib/api-auth';
 import HeadTags from '../components/HeadTags';
-import styles from '../styles/Home.module.css';
 
 export default function Home({ accessResponse = '' }) {
   const router = useRouter();
   const isAuthed = Boolean(accessResponse || router.query?.authed);
   
   return (
-    <div className={styles.container}>
+    <>
       <HeadTags title="Home" customStyle="html { background: linear-gradient(170deg, #222 calc(70% - 1px), #444 30%)!important; }" />
       <div className="md:flex">
         <div className="p-4 md:w-3/5 mt-8 md:mt-52">
@@ -27,7 +26,7 @@ export default function Home({ accessResponse = '' }) {
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
