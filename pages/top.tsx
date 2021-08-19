@@ -19,8 +19,8 @@ export default function Top({ accessResponse = '' }) {
     );
   }
 
-  const [topType, setTopType] = useState('tracks');
-  const [timeRange, setTimeRange] = useState('short_term');
+  const [topType, setTopType] = useState<string>('tracks');
+  const [timeRange, setTimeRange] = useState<string>('short_term');
   const access = JSON.parse(accessResponse);
 
   return (
@@ -33,7 +33,7 @@ export default function Top({ accessResponse = '' }) {
             <option value="tracks">tracks</option>
             <option value="artists">artists</option>
           </select>
-          from
+          of
           <select name="time-range" className="mx-2 pr-1 bg-transparent border-2 border-green-600 rounded cursor-pointer" onChange={e => setTimeRange(e.target.value)}>
             <option value="short_term">the last 4 weeks</option>
             <option value="medium_term">the last 6 months</option>
