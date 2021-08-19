@@ -6,7 +6,7 @@ import TopArtistsOrTracksList from '../components/TopArtistsOrTracksList';
 import { serverSideAuthCheck } from '../lib/api-auth';
 
 export default function Top({ accessResponse = '' }) {
-  if (!accessResponse) { 
+  if (!accessResponse) {
     return <NotAuthedMessage pageTitle="Top Artists and Tracks" message="Sorry, your top artists and tracks are only available if you log in with Spotify." />;
   }
 
