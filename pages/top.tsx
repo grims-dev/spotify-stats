@@ -24,7 +24,7 @@ export default function Top({ accessResponse = '' }) {
   return (
     <>
       <HeadTags title={`Top ${topType[0].toUpperCase() + topType.substring(1)}`} />
-      <div className="p-4 md:mt-6 text-xl md:text-2xl leading-normal">
+      <div className="md:mt-6 text-xl md:text-2xl leading-normal">
         <p className="mb-6">
           Your top Spotify
           <select name="top-type" className="mx-2 pr-1 bg-transparent border-2 border-green-600 rounded cursor-pointer" onChange={e => setTopType(e.target.value)}>
