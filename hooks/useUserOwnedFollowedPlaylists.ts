@@ -8,6 +8,6 @@ export default function useUserOwnedFollowedPlaylists(accessToken: string) {
   return {
     data,
     isLoading: !error && !data,
-    isError: error
+    isError: error || data?.error
   }
 }

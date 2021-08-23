@@ -16,6 +16,6 @@ export default function useTopArtistsOrTracks(accessToken: string, options: Endp
   return {
     data,
     isLoading: !error && !data,
-    isError: error
+    isError: error || data?.error
   }
 }

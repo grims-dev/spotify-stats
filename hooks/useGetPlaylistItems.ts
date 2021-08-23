@@ -11,6 +11,6 @@ export default function useGetPlaylistItems(accessToken: string, options: Endpoi
   return {
     data,
     isLoading: !error && !data,
-    isError: error
+    isError: error || data?.error
   }
 }
