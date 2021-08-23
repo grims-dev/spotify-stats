@@ -9,7 +9,6 @@ export default function PlaylistsList({ accessToken }) {
   if (isError) return <>An error occurred when connecting to Spotify. Please try reloading the page.</>;
 
   if (data?.items && data?.items?.length > 0) {
-    console.log(data.items);
     return (
       <ul className="list-none grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-5 justify-center text-base">
         {data.items.map((item) => {
