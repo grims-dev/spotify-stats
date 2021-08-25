@@ -1,40 +1,45 @@
+import Rating from '../components/Rating';
 import useTracksAudioFeatures from '../hooks/useTracksAudioFeatures';
+import { convertMsToMinutes, averageObjectValues } from '../lib/helpers';
 
 export default function MultipleTracksAnalysis({ accessToken, endpointOptions }) {
   const { data, isLoading, isError } = useTracksAudioFeatures(accessToken, endpointOptions);
   if (isLoading) return <>Loading...</>;
   if (isError) return <>An error occurred when connecting to Spotify. Please try reloading the page.</>;
 
-  console.log('audio features', data.audio_features);
   if (data?.audio_features && data?.audio_features?.length > 0) {
+    const keysToAverage = [
+      'duration_ms',
+      'tempo',
+      'danceability',
+      'energy',
+      'loudness',
+      'valence',
+    ];
+    const averages = averageObjectValues(data.audio_features, keysToAverage);
     return (
       <>
-      Acousticness
-      "A measure of whether how acoustic the tracks are."
-      {data.acousticness}
+        Average Duration<br/>
+        {convertMsToMinutes(averages.duration_ms)}<br/>
 
-      Danceability
-      "How suitable the tracks are is for dancing based on tempo and rhythm."
-      {data.danceability}
+        Average Tempo<br/>
+        {Math.floor(averages.tempo)} BPM<br/>
 
-      Average Duration
-      {data.duration_ms}
+        Danceability<br/>
+        "How suitable the tracks are for dancing based on tempo and rhythm."
+        <Rating value={averages.danceability} maxValue={1} />
 
-      Energy
-      "How energetic the tracks are based on dynamic range, perceived loudness, and timbre."
-      {data.energy}
+        Energy<br/>
+        "How energetic the tracks are based on dynamic range, perceived loudness, and timbre."
+        <Rating value={averages.energy} maxValue={1} />
 
-      Loudness
-      "The overall loudness of the tracks based on decibels (dB)."
-      {data.loudness}
-
-      Tempo
-      "The estimated tempo of the tracks in beats per minute (BPM)."
-      {data.tempo}
-      
-      Valence
-      "How positive/happy the tracks are."
-      {data.valence}
+        Loudness<br/>
+        "The overall loudness of the tracks based on decibels (dB)."
+        <Rating value={averages.loudness} maxValue={0} minValue={-60} />
+        
+        Valence<br/>
+        "How positive/happy the tracks are."
+        <Rating value={averages.valence} maxValue={1} />
       </>
     )
   }
