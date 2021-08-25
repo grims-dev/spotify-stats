@@ -24,6 +24,7 @@ export default function PlaylistStats({ accessResponse = '' }) {
       <div className="p-4 md:mt-6 text-xl md:text-2xl leading-normal">
         <p className="mb-6">Here's information about the playlist</p>
         <PlaylistInfo accessToken={access.access_token} endpointOptions={{ playlistID }} />
+        <hr className="opacity-30 my-8" />
         <PlaylistTracks accessToken={access.access_token} endpointOptions={{ playlistID }} />
       </div>
     </>

@@ -10,9 +10,9 @@ export default function Rating({
   minValue = 0,
 }: RatingProps) {
   return (
-    <div className="flex">
-      {`${Math.round((value / maxValue) * 100)}%`}
-      <meter value={value} max={maxValue} min={minValue} />
+    <div className="text-center">
+      {`${Math.round((value / maxValue) * 100)}%`}<br/>
+      <meter className="w-4/5" value={value} max={maxValue} min={minValue} />
     </div>
   )
 }
