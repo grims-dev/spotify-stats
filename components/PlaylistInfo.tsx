@@ -8,9 +8,13 @@ export default function PlaylistInfo({ accessToken, endpointOptions }) {
   if (Object.keys(data).length > 0) {
     return (
       <div className="text-base sm:flex sm:items-center">
-        <img src={data?.images?.[0]?.url} alt={`${data.name} playlist icon`} className="inline-block sm:mr-4 sm:w-1/3 md:w-1/4" />
+        <img
+          src={data?.images?.[0]?.url}
+          alt={`${data.name} playlist icon`}
+          className="inline-block mb-4 sm:mb-0 sm:mr-4 sm:w-1/3 md:w-1/4"
+        />
         <div className="inline-block">
-          <h1 className="text-4xl">{data.name}</h1>
+          <h1 className="text-5xl">{data.name}</h1>
           {data.description && <p className="italic">{data.description}</p>}
           <p className="mt-4">{data.public ? 'Public' : 'Private'} playlist by {data.owner.display_name}&nbsp;&nbsp;•&nbsp;&nbsp;{data.tracks.total} songs</p>
         </div>
