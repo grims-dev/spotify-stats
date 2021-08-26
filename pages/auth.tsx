@@ -13,11 +13,17 @@ export async function getServerSideProps({ req, res, query }) {
       destination: "/"
     }
   }
+  const homeRedirectAuthed = {
+    redirect: {
+      permanent: false,
+      destination: "/?authed=true"
+    }
+  }
   const cookies = new Cookies(req, res, signCookieKeys);
   const existingAccessJSON = cookies.get('accessResponse', getOptions);
   const existingAccess = existingAccessJSON ? JSON.parse(existingAccessJSON) : null;
   if (existingAccess && new Date().getTime() < existingAccess.expires_in_unix_timestamp) {
-    return homeRedirect;
+    return homeRedirectAuthed;
   }
 
   let code = query.code || req.cookies.code;
@@ -34,10 +40,5 @@ export async function getServerSideProps({ req, res, query }) {
   accessResponse.expires_in_unix_timestamp = new Date().getTime() + (accessResponse.expires_in * 1000);
   cookies.set('accessResponse', JSON.stringify(accessResponse), setOptions);
 
-  return {
-    redirect: {
-      permanent: false,
-      destination: "/?authed=true"
-    }
-  };
+  return homeRedirectAuthed;
 }
