@@ -21,10 +21,10 @@ export default function Home({ accessResponse = '' }) {
               You are logged in with Spotify!<br/><br/>
               View your <Link href="/top">top tracks & artists &raquo;</Link><br/>
               Or view <Link href="/playlists">your playlist stats &raquo;</Link>
-              </p>
+            </p>
           ) : (
             <>
-              <p className="mb-6">Log in with Spotify to view your listening habits in charts and graphs.</p>
+              <p className="mb-6">Log in with Spotify to view your favourite tracks and artists, recent listening habits, and playlist data.</p>
               <button className="px-4 py-2 bg-green-600 rounded shadow-md text-xl" onClick={redirectToUserAuth}>Log in</button>
             </>
           )}
