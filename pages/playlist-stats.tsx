@@ -1,6 +1,5 @@
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import HeadTags from '../components/HeadTags';
 import NotAuthedMessage from '../components/NotAuthedMessage';
 import PlaylistInfo from '../components/PlaylistInfo';
@@ -22,8 +21,7 @@ export default function PlaylistStats({ accessResponse = '' }) {
   return (
     <>
       <HeadTags title="Playlist Stats" />
-      <div className="p-4 md:mt-6 text-xl md:text-2xl leading-normal">
-        <p className="mb-6 text-base"><Link href="/playlists">&laquo; Back to all playlists</Link></p>
+      <div className="md:mt-6 text-xl md:text-2xl leading-normal">
         <PlaylistInfo accessToken={access.access_token} endpointOptions={{ playlistID }} />
         <hr className="my-8 border-gray-500" />
         <PlaylistTracks accessToken={access.access_token} endpointOptions={{ playlistID }} />

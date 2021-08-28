@@ -14,7 +14,7 @@ export default function Playlists({ accessResponse = '' }) {
   return (
     <>
       <HeadTags title="Your Playlists" />
-      <div className="p-4 md:mt-6 text-xl md:text-2xl leading-normal">
+      <div className="md:mt-6 text-xl md:text-2xl leading-normal">
         <p className="mb-6">Select from one of your playlists below to view stats about it:</p>
         <PlaylistsList accessToken={access.access_token} />
       </div>
