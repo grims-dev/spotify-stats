@@ -10,7 +10,7 @@ export default function Home({ accessResponse = '' }) {
   
   return (
     <>
-      <HeadTags title="Home" customStyle="html { background: linear-gradient(170deg, #222 calc(70% - 1px), #444 30%)!important; }" />
+      <HeadTags title="Home" customStyle="html { background: linear-gradient(170deg, #1f2937 calc(70% - 1px), #374151 30%)!important; }" />
       <div className="md:flex">
         <div className="p-4 md:w-3/5 mt-8 md:mt-52">
           <h1 className="text-7xl md:text-9xl text-green-600 text-center md:text-left">Spotify Stats</h1>
