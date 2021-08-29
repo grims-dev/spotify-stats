@@ -13,11 +13,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <PageLayout isHomepage={isHomepage}>
       {!isHomepage && <Header />}
-      <main className="p-4">
-        <Container>
-            <Component {...pageProps} />
-        </Container>
-      </main>
+      <Container>
+        <main className="p-4">
+          <Component {...pageProps} />
+        </main>
+      </Container>
       <Footer />
     </PageLayout>
   );
