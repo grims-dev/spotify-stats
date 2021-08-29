@@ -1,7 +1,5 @@
 import Link from 'next/link';
-import { forwardRef } from 'react';
 import useUserOwnedFollowedPlaylists from '../hooks/useUserOwnedFollowedPlaylists';
-import Card from './Card';
 
 export default function PlaylistsList({ accessToken }) {
   const { data, isLoading, isError } = useUserOwnedFollowedPlaylists(accessToken);
