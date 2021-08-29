@@ -12,10 +12,10 @@ export default function Home({ accessResponse = '' }) {
     <>
       <HeadTags title="Home" customStyle="html { background: linear-gradient(170deg, #1f2937 calc(70% - 1px), #374151 30%)!important; }" />
       <div className="md:flex">
-        <div className="p-4 md:w-3/5 mt-8 md:mt-52">
+        <div className="p-4 md:w-3/5 mt-8 md:mt-36">
           <h1 className="text-7xl md:text-9xl text-green-600 text-center md:text-left">Spotify Stats</h1>
         </div>
-        <div className="p-4 md:w-2/5 md:mt-60 text-xl md:text-2xl leading-normal text-center md:text-left">
+        <div className="p-4 md:w-2/5 md:mt-48 text-xl md:text-2xl leading-normal text-center md:text-left">
           {isAuthed ? (
             <p className="mb-6">
               You are logged in with Spotify!<br/><br/>
