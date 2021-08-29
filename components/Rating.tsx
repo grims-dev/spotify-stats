@@ -13,7 +13,7 @@ export default function Rating({
     <div className="text-center">
       {`${Math.round((value / maxValue) * 100)}%`}<br/>
       <meter
-        className="w-4/5"
+        className="w-4/5 rounded-lg"
         value={value}
         max={maxValue}
         min={minValue}

@@ -14,8 +14,7 @@ export default function PlaylistsList({ accessToken }) {
           return (
             <li key={item.id}>
               <Link href={`/playlist-stats?id=${item.id}`} passHref>
-                <a className="flex items-center h-full w-full break-words overflow-hidden rounded-lg bg-gray-700 border border-gray-600 transform transition duration-200 hover:bg-opacity-80 hover:shadow-lg hover:-translate-y-0.5">
-                  <img src={item?.images?.[item.images.length - 1]?.url} className="w-16" />
+                <a className="flex items-center h-16 w-full break-words overflow-hidden rounded-lg bg-gray-700 border border-gray-600 transform transition duration-200 hover:bg-opacity-80 hover:shadow-lg hover:-translate-y-0.5">
                   <span className="px-4 leading-tight">{item.name}</span>
                 </a>
               </Link>
