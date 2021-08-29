@@ -1,10 +1,11 @@
-import Rating from '../components/Rating';
+import Loader from './Loader';
+import Rating from './Rating';
 import useTracksAudioFeatures from '../hooks/useTracksAudioFeatures';
 import { convertMsToMinutes, averageObjectValues } from '../lib/helpers';
 
 export default function MultipleTracksAnalysis({ accessToken, endpointOptions }) {
   const { data, isLoading, isError } = useTracksAudioFeatures(accessToken, endpointOptions);
-  if (isLoading) return <>Loading...</>;
+  if (isLoading) return <Loader />;
   if (isError) return <>An error occurred when connecting to Spotify. Please try reloading the page.</>;
 
   if (data?.audio_features && data?.audio_features?.length > 0) {

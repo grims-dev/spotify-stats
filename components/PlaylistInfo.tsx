@@ -1,8 +1,9 @@
+import Loader from './Loader';
 import useGetPlaylist from '../hooks/useGetPlaylist';
 
 export default function PlaylistInfo({ accessToken, endpointOptions }) {
   const { data, isLoading, isError } = useGetPlaylist(accessToken, endpointOptions);
-  if (isLoading) return <>Loading...</>;
+  if (isLoading) return <Loader />;
   if (isError) return <>An error occurred when connecting to Spotify. Please try reloading the page.</>;
 
   if (Object.keys(data).length > 0) {

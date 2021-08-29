@@ -1,9 +1,10 @@
 import Link from 'next/link';
+import Loader from './Loader';
 import useUserOwnedFollowedPlaylists from '../hooks/useUserOwnedFollowedPlaylists';
 
 export default function PlaylistsList({ accessToken }) {
   const { data, isLoading, isError } = useUserOwnedFollowedPlaylists(accessToken);
-  if (isLoading) return <>Loading...</>;
+  if (isLoading) return <Loader />;
   if (isError) return <>An error occurred when connecting to Spotify. Please try reloading the page.</>;
 
   if (data?.items && data?.items?.length > 0) {
