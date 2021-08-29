@@ -15,7 +15,7 @@ export default function PlaylistInfo({ accessToken, endpointOptions }) {
           className="inline-block mb-4 sm:mb-0 sm:mr-4 sm:w-1/3 md:w-1/4"
         />
         <div className="inline-block">
-          <h1 className="text-5xl">{data.name}</h1>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl">{data.name}</h1>
           {data.description && <p className="mt-2 italic">{data.description}</p>}
           <p className="mt-4">{data.public ? 'Public' : 'Private'} playlist by {data.owner.display_name}&nbsp;&nbsp;•&nbsp;&nbsp;{data.tracks.total} songs</p>
         </div>
