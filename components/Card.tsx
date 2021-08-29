@@ -1,7 +1,7 @@
 type CardProps = {
   index?: number;
-  imageURL: string;
-  text: string;
+  imageURL?: string;
+  text?: string;
 }
 
 export default function Card({
@@ -11,7 +11,7 @@ export default function Card({
 }: CardProps) {
   return (
     <div
-      className="flex items-end overflow-hidden rounded-lg bg-cover bg-center h-44 relative text-white cursor-default"
+      className="flex items-end overflow-hidden rounded-lg bg-cover bg-center bg-gray-600 h-44 relative text-white cursor-default"
       style={{backgroundImage: `url(${imageURL})`}}
     >
       <div
