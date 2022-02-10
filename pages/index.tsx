@@ -17,11 +17,14 @@ export default function Home({ accessResponse = '' }) {
         </div>
         <div className="p-4 md:w-2/5 text-xl md:text-2xl leading-normal text-center md:text-left">
           {isAuthed ? (
-            <p className="mb-6">
-              You are logged in with Spotify!<br/><br/>
-              View your <Link href="/top">top tracks & artists &raquo;</Link><br/>
-              Or view <Link href="/playlists">your playlist stats &raquo;</Link>
-            </p>
+            <>
+              <p className="mb-6">
+                You are logged in with Spotify!<br/><br/>
+                View your <Link href="/top">top tracks & artists &raquo;</Link><br/>
+                Or view <Link href="/playlists">your playlist stats &raquo;</Link>
+              </p>
+              <Link href="/logout">&laquo; Log out</Link>
+            </>
           ) : (
             <>
               <p className="mb-6">Log in with Spotify to view your favourite tracks and artists, recent listening habits, and playlist data.</p>
