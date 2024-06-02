@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import { getRequest } from '../lib/fetch-helpers';
+import { fetcher } from '../lib/fetch-helpers';
 
 type TopType = 'artists' | 'tracks';
 type TimeRange = 'short_term' | 'medium_term' | 'long_term';
@@ -11,7 +11,9 @@ export default function useTopArtistsOrTracks(accessToken: string, options: Endp
   const endpoint = `https://api.spotify.com/v1/me/top/${options.topType}`
     + `?time_range=${options.timeRange}`
     + `&limit=50`;
-  const { data, error } = useSWR([endpoint, accessToken], getRequest);
+    const { data, error } = useSWR([endpoint, accessToken], fetcher, {
+      revalidateOnFocus: true,
+    });
 
   return {
     data,

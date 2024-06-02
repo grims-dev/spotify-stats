@@ -1,3 +1,5 @@
+import { Fetcher } from 'swr';
+
 export function createGetRequestOptions(accessToken: string) {
   return {
     method: 'GET',
@@ -13,3 +15,5 @@ export async function getRequest(endpointURL: string, accessToken: string) {
     .catch((error) => console.error(error))
     .then((json) => { return json })
 }
+
+export const fetcher = (endpointURL: string, accessToken: string) => getRequest(endpointURL, accessToken);

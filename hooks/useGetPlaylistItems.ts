@@ -1,12 +1,14 @@
 import useSWR from 'swr';
-import { getRequest } from '../lib/fetch-helpers';
+import { fetcher } from '../lib/fetch-helpers';
 
 type EndpointOptions = {
   playlistID: string;
 }
 export default function useGetPlaylistItems(accessToken: string, options: EndpointOptions) {
   const endpoint = `https://api.spotify.com/v1/playlists/${options.playlistID}/tracks`;
-  const { data, error } = useSWR([endpoint, accessToken], getRequest);
+  const { data, error } = useSWR([endpoint, accessToken], fetcher, {
+    revalidateOnFocus: true,
+  });
 
   return {
     data,
