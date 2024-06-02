@@ -20,12 +20,12 @@ export default function Top({ accessResponse = '' }) {
       <div className="md:mt-6 text-xl md:text-2xl leading-normal">
         <p className="mb-6 leading-loose">
           Your top Spotify
-          <select name="top-type" className="mx-2 pr-1 bg-transparent border-2 border-green-600 rounded cursor-pointer" onChange={e => setTopType(e.target.value)}>
+          <select name="top-type" className="mx-2 pr-1 bg-transparent border-2 border-emerald-600 rounded cursor-pointer" onChange={e => setTopType(e.target.value)}>
             <option className="text-black" value="tracks">tracks</option>
             <option className="text-black" value="artists">artists</option>
           </select>
           of
-          <select name="time-range" className="mx-2 pr-1 bg-transparent border-2 border-green-600 rounded cursor-pointer" onChange={e => setTimeRange(e.target.value)}>
+          <select name="time-range" className="mx-2 pr-1 bg-transparent border-2 border-emerald-600 rounded cursor-pointer" onChange={e => setTimeRange(e.target.value)}>
             <option className="text-black" value="short_term">the last 4 weeks</option>
             <option className="text-black" value="medium_term">the last 6 months</option>
             <option className="text-black" value="long_term">all time</option>
